@@ -1,0 +1,21 @@
+{
+  "@@locale": "en",
+  "title": "beatbetter",
+  "description": "Flutter app for self-improvement and motivation",
+  "auth_sign_in_title": "Welcome",
+  "auth_sign_in_email_label": "Email",
+  "auth_sign_in_password_label": "Password",
+  "auth_sign_in_button": "Login",
+  "auth_sign_in_forgot_password": "Forgot Password?",
+  "auth_sign_in_dont_have_account": "Don't have an account?",
+  "auth_sign_in_social": "Or sign in with",
+  "auth_sign_int_create_account": "Create one.",
+  "auth_sign_up_button": "Sign Up",
+  "auth_sign_up_title": "Create an account",
+  "auth_sign_up_email_label": "Email",
+  "auth_sign_up_password_label": "Password",
+  "auth_sign_up_password_confirm_label": "Confirm Password",
+  "auth_sign_up_submit_button": "Sign Up",
+  "auth_sign_up_already_have_account": "Already have an account?",
+  "auth_sign_up_login": "Log In"
+}
