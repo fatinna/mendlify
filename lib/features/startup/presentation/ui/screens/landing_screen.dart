@@ -44,7 +44,7 @@ class _LandingScreenState extends ConsumerState<LandingScreen> {
     final route = ref.watch(goRouterProvider);
 
     return Scaffold(
-      backgroundColor: appBarBackgroundColor,
+      backgroundColor: appBackgroundColor,
       body: Stack(
         children: [
           Positioned(
