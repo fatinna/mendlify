@@ -6,6 +6,7 @@ import '../../features/authentication/forgotpassword/presentation/ui/screens/for
 import '../../features/authentication/forgotpassword/presentation/ui/screens/forgot_password_enter_new_password_screen.dart';
 import '../../features/authentication/signin/presentation/ui/screens/login_screen.dart';
 import '../../features/authentication/signup/presentation/ui/screens/signup_screen.dart';
+import '../../features/startup/presentation/ui/screens/landing_screen.dart';
 import '../../features/startup/presentation/ui/screens/splash_screen.dart';
 import 'route_names.dart';
 
@@ -13,7 +14,7 @@ final goRouterProvider = Provider<GoRouter>((ref) {
   // final authState = ref.watch(authStateProvider);
 
   return GoRouter(
-    initialLocation: getRoutePath(loginRoute),
+    initialLocation: getRoutePath(landingRoute),
     // redirect: (context, state) {
     //   final isGoingToLogin = state.matchedLocation == '/login';
     //
@@ -30,6 +31,11 @@ final goRouterProvider = Provider<GoRouter>((ref) {
         path: getRoutePath(splashRoute),
         name: splashRoute,
         builder: (context, state) => const SplashScreen(),
+      ),
+      GoRoute(
+        path: getRoutePath(landingRoute),
+        name: landingRoute,
+        builder: (context, state) => const LandingScreen(),
       ),
       GoRoute(
         path: getRoutePath(loginRoute),

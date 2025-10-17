@@ -9,6 +9,12 @@ const Color scaffoldBackgroundColorLight = Color(0xfff7f9f9);
 const Color appBarBackgroundColorLight = Color(0xffa3b4a2);
 
 
+//my colors
+const Color appBarBackgroundColor = Color(0xff0D1B2A);
+const Color appTextColor = Color(0xffffffff);
+const Color appButtonColor = Color(0xffD90429);
+
+
 // App Theme Colors Dark Mode
 const Color appPrimaryColorDark = Color(0xffa3b4a2);
 const Color appPrimaryColorDarkColorDark = Color(0xff38686a);
