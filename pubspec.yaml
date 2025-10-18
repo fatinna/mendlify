@@ -70,6 +70,7 @@ dev_dependencies:
   freezed: ^3.0.6
   flutter_gen_runner: ^5.10.0
 
+
 flutter_gen:
   output: lib/gen/ # Optional (default: lib/gen/)
   line_length: 80 # Optional (default: 80)

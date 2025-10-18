@@ -106,7 +106,7 @@ class _LandingScreenState extends ConsumerState<LandingScreen> {
                   child: ElevatedButton(
                     onPressed: () {
                       if (_currentPage == _pages.length - 1) {
-                        route.push(getRoutePath(loginRoute));
+                        route.push(getRoutePath(choiceRoute));
                       } else {
                         _pageController.nextPage(
                           duration: const Duration(milliseconds: 400),
@@ -154,7 +154,7 @@ class _LandingScreenState extends ConsumerState<LandingScreen> {
                 ),
               ),
               GestureDetector(
-                onTap: () => route.push(getRoutePath(loginRoute)),
+                onTap: () => route.push(getRoutePath(choiceRoute)),
                 child: const Padding(
                   padding: EdgeInsets.only(top: 10, bottom: 25),
                   child: Text(

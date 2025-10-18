@@ -21,7 +21,7 @@ class SplashScreen extends ConsumerWidget {
               height: 300,
               fit: BoxFit.contain,
 
-              color: Colors.white.withValues(alpha: 0.1),
+              color: Colors.white.withValues(alpha: 0.5),
             ),
             const AppImage(
               path: appLogoPath,

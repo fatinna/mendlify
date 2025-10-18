@@ -15,7 +15,7 @@ final goRouterProvider = Provider<GoRouter>((ref) {
   // final authState = ref.watch(authStateProvider);
 
   return GoRouter(
-    initialLocation: getRoutePath(landingRoute),
+    initialLocation: getRoutePath(homeRoute),
     // redirect: (context, state) {
     //   final isGoingToLogin = state.matchedLocation == '/login';
     //

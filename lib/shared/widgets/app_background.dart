@@ -20,23 +20,23 @@ class AppBackground extends ConsumerWidget {
             color:appBackgroundColor,
           ),
           Positioned(
-            top: -50,
-            left: -50,
+            top: -40,
+            left: -120,
             child: AppImage(
               path: appDesign2Path,
-              width: 200,
-              height: 200,
-              color: Colors.white.withValues(alpha: 1),
+              width: 300,
+              height: 250,
+              color: Colors.white.withValues(alpha: 0.50),
             ),
           ),
           Positioned(
-            bottom: -60,
-            right: -60,
+            bottom: -40,
+            right: -70,
             child: AppImage(
               path: appDesign2Path,
-              width: 250,
+              width: 350,
               height: 250,
-              color: Colors.white.withValues(alpha: 1),
+              color: Colors.white.withValues(alpha: 0.50),
             ),
           ),
 
@@ -48,3 +48,6 @@ class AppBackground extends ConsumerWidget {
     );
   }
 }
+
+
+
