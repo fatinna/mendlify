@@ -1,23 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mendlify/core/utils/image_resources.dart';
+import 'package:mendlify/shared/widgets/app_background.dart';
+import 'package:mendlify/shared/widgets/app_image.dart';
 
-import '../../../../../core/utils/theme/app_colors.dart';
-
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends ConsumerWidget {
   const SplashScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: appPrimaryColorDarkColorLight,
-      body: Center(
-        child: SizedBox(
-          width: 40,
-          height: 40,
-          child: CircularProgressIndicator(
-            color: Colors.white,
-          ),
+  Widget build(BuildContext context, WidgetRef ref) {
+    return AppBackground(
+      child: Center(
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+
+            AppImage(
+              path: appBikepath,
+              width: 300,
+              height: 300,
+              fit: BoxFit.contain,
+
+              color: Colors.white.withValues(alpha: 0.1),
+            ),
+            const AppImage(
+              path: appLogoPath,
+              width: 220,
+              height: 220,
+              fit: BoxFit.contain,
+            ),
+          ],
         ),
       ),
     );
   }
 }
+

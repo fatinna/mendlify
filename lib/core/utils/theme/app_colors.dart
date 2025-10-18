@@ -14,6 +14,7 @@ const Color appBackgroundColor = Color(0xff0D1B2A);
 const Color appTextColor = Color(0xffffffff);
 const Color appButtonColor = Color(0xffD90429);
 const Color appMainTextColor = Color(0xffE5E7EB);
+const Color appCardColor = Color(0xff1B263B);
 
 
 // App Theme Colors Dark Mode
