@@ -11,9 +11,12 @@ const Color appBarBackgroundColorLight = Color(0xffa3b4a2);
 
 //my colors
 const Color appBackgroundColor = Color(0xff0D1B2A);
+const Color secondaryBackgroundColor = Color(0xff1B263B);
 const Color appTextColor = Color(0xffffffff);
 const Color appButtonColor = Color(0xffD90429);
 const Color appMainTextColor = Color(0xffE5E7EB);
+const Color approveColor = Color(0xff2B971F);
+const Color pendingColor = Color(0xffE9DB1D);//opacity should be 65%
 
 
 // App Theme Colors Dark Mode
