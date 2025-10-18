@@ -1,3 +1,4 @@
+//images
 const String mainAssetsImagesPath = 'assets/images/';
 const String mainAssetsSvgPath = 'assets/svgs/';
 const String appLogoPath = '${mainAssetsImagesPath}app_logo.png';
@@ -6,6 +7,31 @@ const String appDesign2Path = '${mainAssetsImagesPath}design2.png';
 const String appLanding1path = '${mainAssetsImagesPath}landing1.png';
 const String appLanding2path = '${mainAssetsImagesPath}landing2.png';
 const String appLanding3path = '${mainAssetsImagesPath}landing3.png';
+const String rizwanImagePath = '${mainAssetsImagesPath}rizwan.png';
+const String fatimaImagePath = '${mainAssetsImagesPath}fatima.png';
+const String anasImagePath = '${mainAssetsImagesPath}anas.png';
+const String abdullahImagePath = '${mainAssetsImagesPath}abdullah.png';
 
+
+
+//svgs
 const String icFBPath = '${mainAssetsSvgPath}ic_fb.svg';
 const String iconGooglePath = '${mainAssetsSvgPath}ic_google.svg';
+const String adminSvgPath = '${mainAssetsSvgPath}admin.svg';
+const String clientSvgPath = '${mainAssetsSvgPath}client.svg';
+const String commentSvgPath = '${mainAssetsSvgPath}comment.svg';
+const String editSvgPath = '${mainAssetsSvgPath}edit.svg';
+const String fileAddSvgPath = '${mainAssetsSvgPath}file_add.svg';
+const String forumSvgPath = '${mainAssetsSvgPath}forum.svg';
+const String guidesSvgPath = '${mainAssetsSvgPath}guides.svg';
+const String homeSvgPath = '${mainAssetsSvgPath}home.svg';
+const String lastServiceSvgPath = '${mainAssetsSvgPath}last_service.svg';
+const String likeSvgPath = '${mainAssetsSvgPath}like.svg';
+const String mechanicSvgPath = '${mainAssetsSvgPath}mechanic.svg';
+const String oilChangeSvgPath = '${mainAssetsSvgPath}oil_change.svg';
+const String profileSvgPath = '${mainAssetsSvgPath}profile.svg';
+const String sendSvgPath = '${mainAssetsSvgPath}send.svg';
+const String tipSvgPath = '${mainAssetsSvgPath}tip.svg';
+const String vendorSvgPath = '${mainAssetsSvgPath}vendor.svg';
+const String verifySvgPath = '${mainAssetsSvgPath}verify.svg';
+const String tireRepairSvgPath = '${mainAssetsSvgPath}tire_repair.svg';
