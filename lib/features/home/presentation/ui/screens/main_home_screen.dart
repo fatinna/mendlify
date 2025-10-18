@@ -120,7 +120,7 @@ class _TopBarSection extends ConsumerWidget {
           const SizedBox(height: 24),
           Text(
             'Hi Rizwan',
-            style: Theme.of(context).textTheme.displayLarge?.copyWith(fontSize: 32, color: kTextPrimary),
+            style: Theme.of(context).textTheme.displayLarge?.copyWith(fontSize: 28, color: kTextPrimary),
           ),
           const SizedBox(height: 8),
           Text(
@@ -177,16 +177,16 @@ class _ActionCard extends ConsumerWidget {
   }
 }
 
-class _ChartBar extends ConsumerWidget {
+class _ChartBar extends StatelessWidget {
   final String label;
-  final double value;
+  final double value; // 0 - 20
   final double maxValue = 20.0;
   final double chartHeight = 150.0;
 
-  const _ChartBar({required this.label, required this.value});
+  const _ChartBar({required this.label, required this.value, super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final double heightRatio = value / maxValue;
 
     return Column(
@@ -194,29 +194,37 @@ class _ChartBar extends ConsumerWidget {
       children: [
         Container(
           height: chartHeight * heightRatio,
-          width: 16,
+          width: 38, // increased width
           decoration: BoxDecoration(
-            color: kAccentRed,
-            borderRadius: BorderRadius.circular(4),
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                const Color(0xFFD90429).withOpacity(0.9), // 20% opacity at top
+                const Color(0xFFD90429).withOpacity(0.4), // 70% opacity at bottom
+              ],
+            ),
+            borderRadius: BorderRadius.circular(1),
           ),
         ),
         const SizedBox(height: 8),
         Text(
           label,
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: kTextSecondary),
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white),
         ),
       ],
     );
   }
 }
 
-class _KilometersChartCard extends ConsumerWidget {
-  const _KilometersChartCard();
+
+class _KilometersChartCard extends StatelessWidget {
+  const _KilometersChartCard({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final List<double> barHeights = [10, 15, 7, 12, 16, 5];
-    const List<String> months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June'];
+  Widget build(BuildContext context) {
+    final List<double> barHeights = [10, 15, 7, 12, 16, 7, 10];
+    const List<String> months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July'];
 
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 26.0, vertical: 12.0),
@@ -231,22 +239,43 @@ class _KilometersChartCard extends ConsumerWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Kilometres Driven', style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: kTextPrimary)),
-                Text('15,000 km', style: Theme.of(context).textTheme.titleLarge?.copyWith(color: kTextSecondary)),
+                Text('Kilometres Driven',
+                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: kTextPrimary)),
+                Text('15,000 km',
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(color: kTextSecondary)),
               ],
             ),
             const SizedBox(height: 20),
             SizedBox(
               height: 180,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: List.generate(barHeights.length, (index) {
-                  return _ChartBar(
-                    label: months[index],
-                    value: barHeights[index],
-                  );
-                }),
+              child: Stack(
+                children: [
+                  // Horizontal lines behind bars
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: List.generate(4, (index) {
+                      return Container(
+                        height: 1,
+                        color: Colors.white24,
+                      );
+                    }),
+                  ),
+                  // Bars
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center, // center the bars
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: List.generate(barHeights.length, (index) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 6.0), // space only between bars
+                        child: _ChartBar(
+                          label: months[index],
+                          value: barHeights[index],
+                        ),
+                      );
+                    }),
+                  ),
+
+                ],
               ),
             ),
           ],
@@ -255,6 +284,7 @@ class _KilometersChartCard extends ConsumerWidget {
     );
   }
 }
+
 
 class _MaintenanceCard extends ConsumerWidget {
   const _MaintenanceCard();
