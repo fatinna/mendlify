@@ -33,3 +33,4 @@ const String tipSvgPath = '${mainAssetsSvgPath}tip.svg';
 const String vendorSvgPath = '${mainAssetsSvgPath}vendor.svg';
 const String verifySvgPath = '${mainAssetsSvgPath}verify.svg';
 const String tireRepairSvgPath = '${mainAssetsSvgPath}tire_repair.svg';
+const String appleSvgPath = '${mainAssetsSvgPath}apple.svg';

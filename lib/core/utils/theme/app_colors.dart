@@ -17,6 +17,7 @@ const Color appMainTextColor = Color(0xffE5E7EB);
 const Color appCardColor = Color(0xff1B263B);
 const Color appApproveColor = Color(0xff2B971F);
 const Color appPendingColor = Color(0xffE9DB1D);
+const Color appSocialColor = Color(0xffFCF3F6);
 
 
 // App Theme Colors Dark Mode

@@ -6,6 +6,8 @@ const String forgotPasswordEnterEmailRoute = 'forgotPasswordEnterEmail';
 const String forgotPasswordEnterNewPasswordRoute = 'forgotPasswordEnterNewPassword';
 const String landingRoute = 'landing';
 const String choiceRoute = 'choice';
+const String profileRoute = 'profile';
+
 
 //home
 const String homeRoute = 'home';

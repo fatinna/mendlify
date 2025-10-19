@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mendlify/core/route/go_router_provider.dart';
 import 'package:mendlify/shared/widgets/app_background.dart';
 import 'package:mendlify/core/utils/theme/app_colors.dart';
-
 import '../../../../../core/route/route_names.dart';
 
 class ChoiceScreen extends ConsumerWidget {
@@ -11,7 +10,7 @@ class ChoiceScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final route=ref.watch(goRouterProvider);
+    final route = ref.watch(goRouterProvider);
     return AppBackground(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -37,7 +36,8 @@ class ChoiceScreen extends ConsumerWidget {
                   icon: Icons.build_circle_outlined,
                   label: 'Mechanics',
                   onTap: () {
-                    route.push(getRoutePath(loginRoute));
+                    // Only navigates to the login route
+                    route.push(getRoutePath(homeRoute));
                   },
                 ),
                 const SizedBox(width: 20),
@@ -46,7 +46,8 @@ class ChoiceScreen extends ConsumerWidget {
                   icon: Icons.person_outline,
                   label: 'Client',
                   onTap: () {
-                    route.push(getRoutePath(loginRoute));
+                    // Only navigates to the login route
+                    route.push(getRoutePath(homeRoute));
                   },
                 ),
               ],
@@ -57,7 +58,8 @@ class ChoiceScreen extends ConsumerWidget {
               icon: Icons.admin_panel_settings_outlined,
               label: 'Admin',
               onTap: () {
-                route.push(getRoutePath(loginRoute));
+                // Only navigates to the login route
+                route.push(getRoutePath(homeRoute));
               },
             ),
           ],
@@ -84,7 +86,7 @@ class ChoiceScreen extends ConsumerWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(icon, color:appButtonColor, size: 40),
+            Icon(icon, color: appButtonColor, size: 40),
             const SizedBox(height: 10),
             Text(
               label,
@@ -99,3 +101,4 @@ class ChoiceScreen extends ConsumerWidget {
     );
   }
 }
+

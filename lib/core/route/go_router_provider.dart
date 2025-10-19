@@ -6,6 +6,7 @@ import '../../features/authentication/forgotpassword/presentation/ui/screens/for
 import '../../features/authentication/forgotpassword/presentation/ui/screens/forgot_password_enter_new_password_screen.dart';
 import '../../features/authentication/signin/presentation/ui/screens/login_screen.dart';
 import '../../features/authentication/signup/presentation/ui/screens/signup_screen.dart';
+import '../../features/home/presentation/ui/screens/profile_screen.dart';
 import '../../features/startup/presentation/ui/screens/choice_screen.dart';
 import '../../features/startup/presentation/ui/screens/landing_screen.dart';
 import '../../features/startup/presentation/ui/screens/splash_screen.dart';
@@ -15,7 +16,7 @@ final goRouterProvider = Provider<GoRouter>((ref) {
   // final authState = ref.watch(authStateProvider);
 
   return GoRouter(
-    initialLocation: getRoutePath(homeRoute),
+    initialLocation: getRoutePath(landingRoute),
     // redirect: (context, state) {
     //   final isGoingToLogin = state.matchedLocation == '/login';
     //
@@ -44,18 +45,19 @@ final goRouterProvider = Provider<GoRouter>((ref) {
         name: choiceRoute,
         builder: (context, state) => const ChoiceScreen(),
       ),
+
       GoRoute(
         path: getRoutePath(loginRoute),
         name: loginRoute,
         builder: (context, state) => const LoginScreen(),
         routes: [
           GoRoute(
-            path: getRoutePath(forgotPasswordEnterEmailRoute),
+            path: forgotPasswordEnterEmailRoute,
             name: forgotPasswordEnterEmailRoute,
             builder: (context, state) => const ForgotPasswordEnterEmailScreen(),
             routes: [
               GoRoute(
-                path: getRoutePath(forgotPasswordEnterNewPasswordRoute),
+                path: forgotPasswordEnterNewPasswordRoute,
                 name: forgotPasswordEnterNewPasswordRoute,
                 builder: (context, state) => const ForgotPasswordEnterNewPasswordScreen(),
               ),
@@ -73,6 +75,11 @@ final goRouterProvider = Provider<GoRouter>((ref) {
         name: homeRoute,
         builder: (context, state) => const MainHomeScreen(),
       ),
+      GoRoute(
+        path: getRoutePath(profileRoute),
+        name: profileRoute,
+        builder: (context, state) => const ProfileScreen(),
+      ),
     ],
   );
 });
@@ -80,3 +87,4 @@ final goRouterProvider = Provider<GoRouter>((ref) {
 String getRoutePath(String route) {
   return "/$route";
 }
+
