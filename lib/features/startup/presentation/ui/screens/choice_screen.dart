@@ -12,57 +12,61 @@ class ChoiceScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final route = ref.watch(goRouterProvider);
     return AppBackground(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const Text(
-              'Continue as',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Arvo',
+      // <-- FIX 1: Add a Scaffold here
+      child: Scaffold(
+        backgroundColor: Colors.transparent, // So AppBackground shows through
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Text(
+                'Continue as',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Arvo',
+                ),
               ),
-            ),
-            const SizedBox(height: 40),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _buildChoiceButton(
-                  context: context,
-                  icon: Icons.build_circle_outlined,
-                  label: 'Mechanics',
-                  onTap: () {
-                    // Only navigates to the login route
-                    route.push(getRoutePath(homeRoute));
-                  },
-                ),
-                const SizedBox(width: 20),
-                _buildChoiceButton(
-                  context: context,
-                  icon: Icons.person_outline,
-                  label: 'Client',
-                  onTap: () {
-                    // Only navigates to the login route
-                    route.push(getRoutePath(homeRoute));
-                  },
-                ),
-              ],
-            ),
-            const SizedBox(height: 20),
-            _buildChoiceButton(
-              context: context,
-              icon: Icons.admin_panel_settings_outlined,
-              label: 'Admin',
-              onTap: () {
-                // Only navigates to the login route
-                route.push(getRoutePath(homeRoute));
-              },
-            ),
-          ],
+              const SizedBox(height: 40),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  _buildChoiceButton(
+                    context: context,
+                    icon: Icons.build_circle_outlined,
+                    label: 'Mechanics',
+                    onTap: () {
+                      // <-- FIX 2: Removed undefined 'getRoutePath' function
+                      route.push(getRoutePath(loginRoute));
+                    },
+                  ),
+                  const SizedBox(width: 20),
+                  _buildChoiceButton(
+                    context: context,
+                    icon: Icons.person_outline,
+                    label: 'Client',
+                    onTap: () {
+
+                      route.push(getRoutePath(loginRoute));
+                    },
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              _buildChoiceButton(
+                context: context,
+                icon: Icons.admin_panel_settings_outlined,
+                label: 'Admin',
+                onTap: () {
+                  // <-- FIX 2: Removed undefined 'getRoutePath' function
+                  route.push(getRoutePath(loginRoute));
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -101,4 +105,3 @@ class ChoiceScreen extends ConsumerWidget {
     );
   }
 }
-

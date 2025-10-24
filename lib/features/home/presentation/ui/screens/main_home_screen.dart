@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mendlify/features/home/presentation/ui/screens/all_posts.dart';
 import 'package:mendlify/features/home/presentation/ui/screens/profile_screen.dart';
+import 'package:mendlify/features/home/presentation/ui/screens/vendor_screen.dart';
 import 'package:mendlify/shared/widgets/app_background.dart';
 import 'package:mendlify/shared/widgets/bottom_navbar.dart';
-import 'package:mendlify/core/utils/theme/app_colors.dart'; // Assuming colors are here
+import 'package:mendlify/core/utils/theme/app_colors.dart';
 
 class MainHomeScreen extends ConsumerStatefulWidget {
   const MainHomeScreen({super.key});
@@ -18,9 +20,9 @@ class _MainHomeScreenState extends ConsumerState<MainHomeScreen> {
 
   final List<Widget> _pages = [
     const _DashboardContent(), // Index 0: Home
-    const Center(child: Text('Chat Page', style: TextStyle(color: appMainTextColor))), // Index 1: Chat
+    const AllPostsScreen(),
     const Center(child: Text('Service Page', style: TextStyle(color: appMainTextColor))), // Index 2: Service
-    const Center(child: Text('History Page', style: TextStyle(color: appMainTextColor))), // Index 3: History
+    const VendorScreen(), // Index 3: History
     const ProfileScreen(), // Index 4: Profile
   ];
 
@@ -68,7 +70,7 @@ class _MainHomeScreenState extends ConsumerState<MainHomeScreen> {
               Icons.home_outlined,
               Icons.chat_outlined,
               Icons.build_outlined,
-              Icons.history_outlined,
+              Icons.shopping_cart_outlined,
               Icons.person_outline,
             ],
           ),

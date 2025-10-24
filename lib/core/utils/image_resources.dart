@@ -7,11 +7,12 @@ const String appLanding1path = '${mainAssetsImagesPath}landing1.png';
 const String appLanding2path = '${mainAssetsImagesPath}landing2.png';
 const String appLanding3path = '${mainAssetsImagesPath}landing3.png';
 const String appBikepath = '${mainAssetsImagesPath}bike.png';
-const String appLoginBackground = '${mainAssetsImagesPath}login_background.png';
+const String appLoginBackgroundPath = '${mainAssetsImagesPath}login_background.png';
 const String rizwanImagePath = '${mainAssetsImagesPath}rizwan.png';
 const String fatimaImagePath = '${mainAssetsImagesPath}fatima.png';
 const String anasImagePath = '${mainAssetsImagesPath}anas.png';
 const String abdullahImagePath = '${mainAssetsImagesPath}abdullah.png';
+const String appProfileGradientPath = '${mainAssetsImagesPath}profile_gradient.png';
 
 const String icFBPath = '${mainAssetsSvgPath}ic_fb.svg';
 const String iconGooglePath = '${mainAssetsSvgPath}ic_google.svg';

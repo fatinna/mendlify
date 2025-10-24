@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mendlify/core/route/go_router_provider.dart';
+import 'package:mendlify/core/route/route_names.dart';
 import 'package:mendlify/core/utils/image_resources.dart';
 import 'package:mendlify/core/utils/theme/app_colors.dart';
 import 'package:mendlify/shared/widgets/app_image.dart';
@@ -40,43 +42,58 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final route = ref.watch(goRouterProvider);
+
     return AppBackground(
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              // Top decorative image
-              const AppImage(
-                path: appLoginBackground,
-                width: 412,
-                height: 291,
-                fit: BoxFit.cover,
+        body: Column(
+          children: [
+            SizedBox(
+              height: 250,
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  const AppImage(
+                    path: appLoginBackgroundPath,
+                    fit: BoxFit.cover,
+                  ),
+                  Positioned(
+                    top: 70,
+                    left: 24,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Hi, Welcome Back!',
+                          style: TextStyle(
+                            color: Colors.white.withAlpha(230),
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        const Text(
+                          'Login',
+                          style: TextStyle(
+                            color: appMainTextColor,
+                            fontSize: 60,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-              Padding(
-                padding: const EdgeInsets.all(24.0),
+            ),
+            // --- Form Section ---
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24.0),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // Welcome Text
-                    const Text(
-                      'Hi, Welcome Back!',
-                      style: TextStyle(
-                        color: appTextColor,
-                        fontSize: 16,
-                      ),
-                    ),
-                    const Text(
-                      'Login',
-                      style: TextStyle(
-                        color: appMainTextColor,
-                        fontSize: 48,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 30),
-
-                    // Email Field
+                    const Spacer(flex: 2),
                     AppTextFormField(
                       controller: _emailController,
                       focusNode: _emailFocusNode,
@@ -85,8 +102,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       textInputAction: TextInputAction.next,
                     ),
                     const SizedBox(height: 20),
-
-                    // Password Field
                     AppTextFormField(
                       controller: _passwordController,
                       focusNode: _passwordFocusNode,
@@ -95,31 +110,30 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       prefixIcon: const Icon(Icons.lock_outline, color: appTextColor),
                       textInputAction: TextInputAction.done,
                     ),
-                    const SizedBox(height: 12),
-
-                    // Forgot Password
                     Align(
                       alignment: Alignment.centerRight,
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          route.push(getRoutePath(forgotPasswordEnterEmailRoute));
+                        },
                         child: const Text(
                           'Forgot Password?',
-                          style: TextStyle(color: appTextColor),
+                          style: TextStyle(color: appTextColor, fontWeight: FontWeight.bold),
                         ),
                       ),
                     ),
                     const SizedBox(height: 20),
-
-                    // Login Button
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          route.push(getRoutePath(homeRoute));
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: appButtonColor,
                           padding: const EdgeInsets.symmetric(vertical: 16),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(30),
                           ),
                         ),
                         child: const Text(
@@ -132,22 +146,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 40),
-
-                    // Social Login Divider
-                    const Row(
-                      children: [
-                        Expanded(child: Divider(color: appTextColor)),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 8.0),
-                          child: Text('- OR Continue with -', style: TextStyle(color: appTextColor)),
-                        ),
-                        Expanded(child: Divider(color: appTextColor)),
-                      ],
-                    ),
-                    const SizedBox(height: 30),
-
-                    // Social Login Buttons
+                    const Spacer(flex: 3),
+                    const Text('- OR Continue with -', style: TextStyle(color: appTextColor)),
+                    const SizedBox(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -158,16 +159,14 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         _buildSocialButton(imagePath: icFBPath),
                       ],
                     ),
-                    const SizedBox(height: 40),
-
-                    // Sign Up Text
+                    const Spacer(flex: 3),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Text("Create An Account ", style: TextStyle(color: appTextColor)),
                         GestureDetector(
                           onTap: () {
-                            // Navigate to Sign Up Screen
+                            route.push(getRoutePath(singUpRoute));
                           },
                           child: const Text(
                             'Sign Up',
@@ -179,21 +178,27 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         ),
                       ],
                     ),
+                    const Spacer(flex: 1),
                   ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
   }
 
   Widget _buildSocialButton({required String imagePath}) {
-    return CircleAvatar(
-      radius: 24,
-      backgroundColor: appSocialColor,
-      child: AppSvg(path: imagePath, width: 24, height: 24),
+    return InkWell(
+      onTap: () {},
+      borderRadius: BorderRadius.circular(24),
+      child: CircleAvatar(
+        radius: 24,
+        backgroundColor: appSocialColor,
+        child: AppSvg(path: imagePath, width: 24, height: 24),
+      ),
     );
   }
 }
+

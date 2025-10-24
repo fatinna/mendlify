@@ -7,6 +7,9 @@ const String forgotPasswordEnterNewPasswordRoute = 'forgotPasswordEnterNewPasswo
 const String landingRoute = 'landing';
 const String choiceRoute = 'choice';
 const String profileRoute = 'profile';
+const String vendorRoute = 'vendor';
+const String communityRoute = 'community';
+const String postDetailRoute = 'postDetail';
 
 
 //home

@@ -4,40 +4,30 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4eb4e93-26e1-4b6e-aaa2-20a4711fa856" name="Changes" comment="images update">
-      <change afterPath="$PROJECT_DIR$/lib/features/home/presentation/ui/screens/profile_screen.dart" afterDir="false" />
+    <list default="true" id="b4eb4e93-26e1-4b6e-aaa2-20a4711fa856" name="Changes" comment="login screen&#10;choice screen&#10;home screen&#10;bottom navbar updated">
+      <change afterPath="$PROJECT_DIR$/lib/features/home/presentation/ui/screens/all_posts.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/features/home/presentation/ui/screens/post_detail_screen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/features/home/presentation/ui/screens/vendor_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config_subset" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config_subset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/version" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/version" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/8.10.2/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/8.10.2/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/8.10.2/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/8.10.2/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/8.10.2/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/8.10.2/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/8.10.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/8.10.2/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/8.10.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/8.10.2/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/8.10.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/8.10.2/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/8.10.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/8.10.2/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/8.10.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/8.10.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/local.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/svgs/ic_fb.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/svgs/ic_fb.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/svgs/ic_google.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/svgs/ic_google.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/core/route/go_router_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/route/go_router_provider.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/core/route/route_names.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/route/route_names.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/core/utils/image_resources.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/utils/image_resources.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/utils/theme/app_colors.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/utils/theme/app_colors.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/features/authentication/signin/presentation/ui/screens/login_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/authentication/signin/presentation/ui/screens/login_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/features/home/presentation/ui/screens/main_home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/home/presentation/ui/screens/main_home_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/features/home/presentation/ui/screens/profile_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/home/presentation/ui/screens/profile_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/features/startup/presentation/ui/screens/choice_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/features/startup/presentation/ui/screens/choice_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/shared/widgets/app_text_form_field.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/shared/widgets/app_text_form_field.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/shared/widgets/bottom_navbar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/shared/widgets/bottom_navbar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -95,7 +85,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
 }</component>
@@ -138,12 +128,32 @@
       <option name="project" value="LOCAL" />
       <updated>1760813942288</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="login screen&#10;choice screen&#10;home screen&#10;bottom navbar updated">
+      <option name="closed" value="true" />
+      <created>1760873961230</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1760873961230</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="new commit" />
     <MESSAGE value="images update" />
-    <option name="LAST_COMMIT_MESSAGE" value="images update" />
+    <MESSAGE value="login screen&#10;choice screen&#10;home screen&#10;bottom navbar updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="login screen&#10;choice screen&#10;home screen&#10;bottom navbar updated" />
   </component>
 </project>

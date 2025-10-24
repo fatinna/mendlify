@@ -6,7 +6,10 @@ import '../../features/authentication/forgotpassword/presentation/ui/screens/for
 import '../../features/authentication/forgotpassword/presentation/ui/screens/forgot_password_enter_new_password_screen.dart';
 import '../../features/authentication/signin/presentation/ui/screens/login_screen.dart';
 import '../../features/authentication/signup/presentation/ui/screens/signup_screen.dart';
+import '../../features/home/presentation/ui/screens/all_posts.dart';
+import '../../features/home/presentation/ui/screens/post_detail_screen.dart';
 import '../../features/home/presentation/ui/screens/profile_screen.dart';
+import '../../features/home/presentation/ui/screens/vendor_screen.dart';
 import '../../features/startup/presentation/ui/screens/choice_screen.dart';
 import '../../features/startup/presentation/ui/screens/landing_screen.dart';
 import '../../features/startup/presentation/ui/screens/splash_screen.dart';
@@ -74,6 +77,21 @@ final goRouterProvider = Provider<GoRouter>((ref) {
         path: getRoutePath(homeRoute),
         name: homeRoute,
         builder: (context, state) => const MainHomeScreen(),
+      ),
+      GoRoute(
+        path: getRoutePath(vendorRoute),
+        name: vendorRoute,
+        builder: (context, state) => const VendorScreen(),
+      ),
+      GoRoute(
+        path: getRoutePath(communityRoute),
+        name: communityRoute,
+        builder: (context, state) => const AllPostsScreen(),
+      ),
+      GoRoute(
+        path: getRoutePath(postDetailRoute),
+        name: postDetailRoute,
+        builder: (context, state) => const PostDetailScreen(),
       ),
       GoRoute(
         path: getRoutePath(profileRoute),
