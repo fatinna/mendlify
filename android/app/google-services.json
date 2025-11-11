@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "305224825489",
+    "project_id": "mendlify-auth",
+    "storage_bucket": "mendlify-auth.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:305224825489:android:f27691ae8e68d44f851d30",
+        "android_client_info": {
+          "package_name": "com.example.mendlify"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOOrNb5m6fGI1EJxElLdv1WJsU7a5rJqw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

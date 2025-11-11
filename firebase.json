@@ -1,0 +1,1 @@
+{"flutter":{"platforms":{"android":{"default":{"projectId":"mendlify-auth","appId":"1:305224825489:android:f27691ae8e68d44f851d30","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"mendlify-auth","configurations":{"android":"1:305224825489:android:f27691ae8e68d44f851d30","ios":"1:305224825489:ios:56ba7c0f1534e363851d30"}}}}}}

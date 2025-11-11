@@ -1,6 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mendlify/core/route/go_router_provider.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mendlify/core/route/route_names.dart';
 import 'package:mendlify/core/utils/image_resources.dart';
 import 'package:mendlify/core/utils/theme/app_colors.dart';
@@ -38,6 +42,44 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     _emailFocusNode.dispose();
     _passwordFocusNode.dispose();
     super.dispose();
+  }
+
+  //Login Firebase Backend
+  Future<void> user_login_emailpassword(GoRouter route) async {
+    try {
+      UserCredential userCredential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(
+              email: _emailController.text.trim(),
+              password: _passwordController.text.trim());
+      // Login successful
+      print("User logged in: ${userCredential.user?.email}");
+
+      //Checking Roles
+      final uid = userCredential.user!.uid;
+
+      final doc =
+          await FirebaseFirestore.instance.collection('Users').doc(uid).get();
+
+      if (!doc.exists) throw Exception("User record not found!");
+
+      final role = doc.data()?['role'] ?? 'user'; // default to user
+
+      print("User logged in: ${userCredential.user?.email}, role: $role");
+
+      if (role == 'admin') {
+        route.push(getRoutePath(singUpRoute));
+      } else if (role == 'user') {
+        route.push(getRoutePath(homeRoute));
+      }
+    } on FirebaseAuthException catch (e) {
+      _emailController.clear();
+      _passwordController.clear();
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Login Denied!")),
+      );
+      print(e.code);
+    }
   }
 
   @override
@@ -98,7 +140,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       controller: _emailController,
                       focusNode: _emailFocusNode,
                       hint: 'Email',
-                      prefixIcon: const Icon(Icons.email_outlined, color: appTextColor),
+                      prefixIcon:
+                          const Icon(Icons.email_outlined, color: appTextColor),
                       textInputAction: TextInputAction.next,
                     ),
                     const SizedBox(height: 20),
@@ -107,18 +150,21 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       focusNode: _passwordFocusNode,
                       hint: 'Password',
                       obscureText: true,
-                      prefixIcon: const Icon(Icons.lock_outline, color: appTextColor),
+                      prefixIcon:
+                          const Icon(Icons.lock_outline, color: appTextColor),
                       textInputAction: TextInputAction.done,
                     ),
                     Align(
                       alignment: Alignment.centerRight,
                       child: TextButton(
                         onPressed: () {
-                          route.push(getRoutePath(forgotPasswordEnterEmailRoute));
+                          route.push(
+                              getRoutePath(forgotPasswordEnterEmailRoute));
                         },
                         child: const Text(
                           'Forgot Password?',
-                          style: TextStyle(color: appTextColor, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              color: appTextColor, fontWeight: FontWeight.bold),
                         ),
                       ),
                     ),
@@ -126,8 +172,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                        onPressed: () {
-                          route.push(getRoutePath(homeRoute));
+                        onPressed: () async {
+                          final route = ref.read(goRouterProvider);
+                          await user_login_emailpassword(route);
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: appButtonColor,
@@ -147,7 +194,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       ),
                     ),
                     const Spacer(flex: 3),
-                    const Text('- OR Continue with -', style: TextStyle(color: appTextColor)),
+                    const Text('- OR Continue with -',
+                        style: TextStyle(color: appTextColor)),
                     const SizedBox(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -163,7 +211,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text("Create An Account ", style: TextStyle(color: appTextColor)),
+                        const Text("Create An Account ",
+                            style: TextStyle(color: appTextColor)),
                         GestureDetector(
                           onTap: () {
                             route.push(getRoutePath(singUpRoute));
@@ -201,4 +250,3 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     );
   }
 }
-
