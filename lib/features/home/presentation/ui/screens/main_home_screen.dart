@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mendlify/core/route/go_router_provider.dart';
+import 'package:mendlify/core/route/route_names.dart'; // Import route names
+import 'package:mendlify/features/home/diagnostics/ui/screens/diagnosis_one_screen.dart';
 import 'package:mendlify/features/home/presentation/ui/screens/all_posts.dart';
-import 'package:mendlify/features/home/presentation/ui/screens/profile_screen.dart';
 import 'package:mendlify/features/home/presentation/ui/screens/vendor_screen.dart';
 import 'package:mendlify/shared/widgets/app_background.dart';
 import 'package:mendlify/shared/widgets/bottom_navbar.dart';
 import 'package:mendlify/core/utils/theme/app_colors.dart';
+
+import '../../../profile/ui/screens/profile_screen.dart';
 
 class MainHomeScreen extends ConsumerStatefulWidget {
   const MainHomeScreen({super.key});
@@ -15,42 +19,33 @@ class MainHomeScreen extends ConsumerStatefulWidget {
 }
 
 class _MainHomeScreenState extends ConsumerState<MainHomeScreen> {
-  // We start with the home page (index 0) in our navigation history
   final List<int> _navigationHistory = [0];
 
   final List<Widget> _pages = [
-    const _DashboardContent(), // Index 0: Home
+    const _DashboardContent(),
     const AllPostsScreen(),
-    const Center(child: Text('Service Page', style: TextStyle(color: appMainTextColor))), // Index 2: Service
-    const VendorScreen(), // Index 3: History
-    const ProfileScreen(), // Index 4: Profile
+    const DiagnosisOneScreen(),
+    const VendorScreen(),
+    const ProfileScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
-    // The current index is always the last item in our history list.
     final currentIndex = _navigationHistory.last;
 
     return AppBackground(
-      // PopScope intercepts the system's back button press.
       child: PopScope(
-        // We can only pop (exit the app) if we are at the very beginning of our navigation history.
         canPop: _navigationHistory.length == 1,
-        // This function is called when the user tries to go back.
         onPopInvoked: (didPop) {
-          // If didPop is true, it means the app is already closing, so we do nothing.
           if (didPop) return;
-
-          // If there's history to go back to, we update the state.
           if (_navigationHistory.length > 1) {
             setState(() {
-              // Remove the current page from history to go to the previous one.
               _navigationHistory.removeLast();
             });
           }
         },
         child: Scaffold(
-          backgroundColor: Colors.transparent, // Important for the background to show
+          backgroundColor: Colors.transparent,
           body: IndexedStack(
             index: currentIndex,
             children: _pages,
@@ -58,10 +53,8 @@ class _MainHomeScreenState extends ConsumerState<MainHomeScreen> {
           bottomNavigationBar: CurvedBottomNavBar(
             selectedIndex: currentIndex,
             onItemSelected: (index) {
-              // Only update the state if a *new* tab is selected
               if (currentIndex != index) {
                 setState(() {
-                  // Add the new tab's index to our history.
                   _navigationHistory.add(index);
                 });
               }
@@ -80,7 +73,6 @@ class _MainHomeScreenState extends ConsumerState<MainHomeScreen> {
   }
 }
 
-// The main content of your dashboard
 class _DashboardContent extends ConsumerWidget {
   const _DashboardContent();
 
@@ -94,20 +86,24 @@ class _DashboardContent extends ConsumerWidget {
             _TopBarSection(),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.0),
-              // We wrap the Row in IntrinsicHeight to ensure both ActionCards have the same height,
-              // even if one title wraps to a second line.
               child: IntrinsicHeight(
                 child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.stretch, // This makes the children fill the height
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     _ActionCard(
                       title: 'Find Mechanics',
                       icon: Icons.car_repair_outlined,
+                      // We can link this to Vendor screen if you like,
+                      // but typically Vendor is already on the bottom bar (index 3).
+                      // For now, I'll leave it or we can link it to vendorRoute explicitly.
+                      // onTap: () => ref.read(goRouterProvider).push(getRoutePath(vendorRoute)),
                     ),
                     SizedBox(width: 16),
                     _ActionCard(
                       title: 'Repair Guide',
                       icon: Icons.menu_book_outlined,
+                      // --- LINK ADDED HERE ---
+                      isRepairGuide: true,
                     ),
                   ],
                 ),
@@ -123,9 +119,6 @@ class _DashboardContent extends ConsumerWidget {
     );
   }
 }
-
-
-// --- All the sub-widgets from your provided code ---
 
 class _TopBarSection extends ConsumerWidget {
   const _TopBarSection();
@@ -168,22 +161,31 @@ class _TopBarSection extends ConsumerWidget {
 class _ActionCard extends ConsumerWidget {
   final String title;
   final IconData icon;
+  final bool isRepairGuide; // Helper to trigger navigation
 
   const _ActionCard({
     required this.title,
     required this.icon,
+    this.isRepairGuide = false,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // The Expanded widget ensures that the cards share the available width equally.
     return Expanded(
       child: Card(
         color: appCardColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         elevation: 4,
         child: InkWell(
-          onTap: () {},
+          onTap: () {
+            // --- NAVIGATION LOGIC ---
+            if (isRepairGuide) {
+              ref.read(goRouterProvider).push(getRoutePath(findGuideRoute));
+            } else if (title == 'Find Mechanics') {
+              // Optional: Navigate to vendor screen via route push if not using bottom bar
+              // ref.read(goRouterProvider).push(getRoutePath(vendorRoute));
+            }
+          },
           borderRadius: BorderRadius.circular(12),
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
@@ -223,7 +225,7 @@ class _ChartBar extends ConsumerWidget {
       children: [
         Container(
           height: chartHeight * heightRatio,
-          width: 28, // Increased width for the bar
+          width: 28,
           decoration: BoxDecoration(
             color: appButtonColor,
             borderRadius: BorderRadius.circular(4),
@@ -269,12 +271,11 @@ class _KilometersChartCard extends ConsumerWidget {
               height: 180,
               child: Stack(
                 children: [
-                  // --- Background lines for the chart ---
                   Positioned.fill(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: List.generate(5, (index) {
-                        if (index == 0) return const SizedBox.shrink(); // No line at the top
+                        if (index == 0) return const SizedBox.shrink();
                         return Divider(
                           color: Colors.white.withOpacity(0.1),
                           thickness: 1,
@@ -282,7 +283,6 @@ class _KilometersChartCard extends ConsumerWidget {
                       }),
                     ),
                   ),
-                  // --- Chart Bars ---
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     crossAxisAlignment: CrossAxisAlignment.end,
@@ -455,4 +455,3 @@ class _TipOfTheDayCard extends ConsumerWidget {
     );
   }
 }
-

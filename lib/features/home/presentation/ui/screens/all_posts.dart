@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mendlify/core/utils/theme/app_colors.dart';
-import 'package:mendlify/core/utils/image_resources.dart'; // Placeholder for your images
+import 'package:mendlify/core/utils/image_resources.dart';
 import 'package:mendlify/shared/widgets/app_image.dart';
 
 import '../../../../../core/route/go_router_provider.dart';
@@ -16,7 +16,7 @@ class AllPostsScreen extends ConsumerWidget {
 
     final posts = [
       {
-        'image': fatimaImagePath, // Replace with actual user image
+        'image': fatimaImagePath,
         'title': 'After heavy rain, the bike refused to start. The self-start...',
         'author': 'Rizwan Ahmed',
         'rating': 5,
@@ -86,15 +86,15 @@ class AllPostsScreen extends ConsumerWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 14.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: appCardColor.withOpacity(0.8), // <-- Added opacity
+                    color: appCardColor.withOpacity(0.8),
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   child: const TextField(
                     style: TextStyle(color: appMainTextColor),
                     decoration: InputDecoration(
                       hintText: 'Search issue...',
-                      hintStyle: TextStyle(color: appTextColor), // <-- Corrected color
-                      prefixIcon: Icon(Icons.search, color: appTextColor), // <-- Corrected color
+                      hintStyle: TextStyle(color: appTextColor),
+                      prefixIcon: Icon(Icons.search, color: appTextColor),
                       border: InputBorder.none,
                       contentPadding: EdgeInsets.symmetric(vertical: 12.0),
                     ),
@@ -130,7 +130,9 @@ class AllPostsScreen extends ConsumerWidget {
             bottom: 20.0,
             right: 20.0,
             child: FloatingActionButton(
-              onPressed: () {},
+              onPressed: () {
+                route.push(getRoutePath(newPostRoute));
+              },
               backgroundColor: appButtonColor,
               child: const Icon(Icons.add, color: Colors.white, size: 30),
             ),

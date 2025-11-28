@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -158,8 +157,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       alignment: Alignment.centerRight,
                       child: TextButton(
                         onPressed: () {
-                          route.push(
-                              getRoutePath(forgotPasswordEnterEmailRoute));
+                          route.push(getRoutePath(forgotPasswordEnterEmailRoute));
                         },
                         child: const Text(
                           'Forgot Password?',
